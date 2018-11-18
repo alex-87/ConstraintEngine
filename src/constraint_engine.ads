@@ -66,8 +66,8 @@ private
 
    type Type_Problem is tagged
       record
-         Var_Cur  : Integer;
-         Ctr_Cur  : Integer;
+         Var_Cur  : Integer := 0;
+         Ctr_Cur  : Integer := 0;
          Var_List : Type_Array_Variable;
          Ctr_List : Type_Array_Constraint;
       end record;
