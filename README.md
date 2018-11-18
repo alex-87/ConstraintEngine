@@ -70,7 +70,7 @@ Relations are represented by an enum :
 
 # Research of the solution
 
-* The solution is found by changing variables values in accordance with theire respective domains. When a solution is found, the constraint engine stops and return a `Type_Problem` object.
+* The solution is found by changing variables values in accordance with their respective domains. When a solution is found, the constraint engine stops and returns a `Type_Problem` object.
 * To launch the research of a solution, call the `Find_Solution`.
 * Reading the solution consists in parsing values of the returned `Type_Problem` object for example :
 
