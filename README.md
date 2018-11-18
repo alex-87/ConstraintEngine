@@ -75,6 +75,12 @@ Relations are represented by an enum :
 * Reading the solution consists in parsing values of the returned `Type_Problem` object for example :
 
 ```Ada
+declare
+   ...
+   S : Type_Array_Variable;
+begin
+   ...
+   
    P := P.Find_Solution;
    S := P.Get_Var;
 
