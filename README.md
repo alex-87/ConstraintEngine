@@ -85,6 +85,8 @@ Relations are represented by an enum :
    New_Line;
 ```
 
+If no solution has been found, the `No_Solution` exception is thrown.
+
 # License
 
 This software is under the MIT License.
