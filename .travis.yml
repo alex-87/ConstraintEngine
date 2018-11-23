@@ -5,6 +5,7 @@ addons:
   apt:
     packages:
     - gnat
+    - gprbuild
 
 script:
   - gprbuild -d -Pconstraintengine.gpr
