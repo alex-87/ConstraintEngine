@@ -35,6 +35,9 @@ package Constraint_Engine is
    
    type Type_Array_Variable   is
      Array( 1 .. Nb_Var ) of Type_Variable;
+
+   type Type_Array_Position   is
+     Array( Integer range <> ) of Positive;
    
    function Find_Solution
      (Self : in Type_Problem) return Type_Problem;
@@ -55,10 +58,14 @@ package Constraint_Engine is
 
    procedure Add_Constraint_Var
      (Self : in out Type_Problem; V1_Position : Positive; Rel : Enum_Relational; V2_Position : Positive);
+
+   pragma Assertion_Policy (Pre => Check);
+   procedure Add_Constraint_Var_Multiple
+     (Self : in out Type_Problem; V_All_Position : Type_Array_Position; Rel : Enum_Relational)
+   with Pre => Rel = IS_EQUAL or Rel = IS_INEQUAL;
    
    procedure Add_Constraint_Int
      (Self : in out Type_Problem; V1_Position : Positive; Rel : Enum_Relational; V : Integer);
-
 
    No_Solution : exception;
 
