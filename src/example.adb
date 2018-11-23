@@ -34,7 +34,7 @@ begin
 
    Put("Solution : ");
    for Cursor in S'Range loop
-      Put( S(Cursor).Curr_Solution'Image & ", ");
+      Put( Integer'Image(S(Cursor).Curr_Solution) & ", ");
    end loop;
    New_Line;
 
