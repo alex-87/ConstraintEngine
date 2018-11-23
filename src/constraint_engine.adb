@@ -173,10 +173,12 @@ package body Constraint_Engine is
    is
    begin
       for Current_A in V_All_Position'Range loop
-         for Current_B in V_All_Position'Range loop
-            Self.Add_Constraint_Var(V1_Position => V_All_Position( Current_A ),
-                                    Rel         => Rel,
-                                    V2_Position => V_All_Position( Current_B ) );
+         for Current_B in Current_A .. V_All_Position'Last loop
+            if V_All_Position( Current_A ) /= V_All_Position( Current_B ) then
+               Self.Add_Constraint_Var(V1_Position => V_All_Position( Current_A ),
+                                       Rel         => Rel,
+                                       V2_Position => V_All_Position( Current_B ) );
+            end if;
          end loop;
       end loop;
    end Add_Constraint_Var_Multiple;
