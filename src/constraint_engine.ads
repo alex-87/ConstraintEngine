@@ -31,10 +31,10 @@ package Constraint_Engine is
       end record;
 
 
-   package Var_Vector is new ADA.Containers.Vectors(Index_Type   => Natural,
+   package Var_Vector is new ADA.Containers.Vectors(Index_Type   => Positive,
                                                     Element_Type => Type_Variable);
    
-   package Ctr_Vector is new ADA.Containers.Vectors(Index_Type   => Natural,
+   package Ctr_Vector is new ADA.Containers.Vectors(Index_Type   => Positive,
                                                     Element_Type => Type_Constraint);
 
 

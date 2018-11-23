@@ -1,11 +1,7 @@
 pragma Ada_2012;
 
-with Ada.Integer_Text_IO,
-     Ada.Text_IO,
-     ADA.Containers.Vectors,
-     Constraint_Engine;
+with ADA.Containers.Vectors;
 
-use  Ada.Integer_Text_IO, Ada.Text_IO;
 
 package body Constraint_Engine is
 
@@ -140,8 +136,7 @@ package body Constraint_Engine is
    is
       New_Var : Type_Variable := (Low_Interval, Top_Interval, Low_Interval);
    begin
-
-      Self.Var_List( Self.Var_Cur + 1 ) := New_Var;
+      Self.Var_List.Append( New_Var );
       Self.Var_Cur                      := Self.Var_Cur + 1;
    end Add_Var;
 
@@ -158,7 +153,7 @@ package body Constraint_Engine is
    is
       C : Type_Constraint := (V1_Position, Rel, V2_Position, 0, True);
    begin
-      Self.Ctr_List( Self.Ctr_Cur + 1 ) := C;
+      Self.Ctr_List.Append( C );
       Self.Ctr_Cur                      := Self.Ctr_Cur + 1;
    end Add_Constraint_Var;
 
@@ -197,7 +192,7 @@ package body Constraint_Engine is
    is
       C : Type_Constraint := (V1_Position, Rel, 1, V, False);
    begin
-      Self.Ctr_List( Self.Ctr_Cur + 1 ) := C;
+      Self.Ctr_List.Append( C );
       Self.Ctr_Cur                      := Self.Ctr_Cur + 1;
    end Add_Constraint_Int;
 
