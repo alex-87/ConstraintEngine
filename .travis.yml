@@ -1,8 +1,6 @@
 dist: xenial
 sudo: enabled
 
-language: ada
-  
 addons:
   apt:
     packages:
@@ -11,4 +9,4 @@ addons:
 
 script:
   - mkdir obj
-  - gprbuild -d -Pconstraintengine.gpr
+  - gprbuild -d -P constraintengine
