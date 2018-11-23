@@ -16,18 +16,18 @@ procedure Example is
 begin
 
    P.Add_Var(Low_Interval => 0,
-             Top_Interval => 5000);
+             Top_Interval => 400);
 
    P.Add_Var(Low_Interval => 0,
-             Top_Interval => 5000);
+             Top_Interval => 500);
 
    P.Add_Constraint_Var(V1_Position => 1,
                         Rel         => IS_MORE,
                         V2_Position => 2);
 
-   P.Add_Constraint_Int(V1_Position => 2,
+   P.Add_Constraint_Int(V1_Position => 1,
                         Rel         => IS_MORE,
-                        V           => 3999);
+                        V           => 150);
 
    P := P.Find_Solution;
    S := P.Get_Var;
