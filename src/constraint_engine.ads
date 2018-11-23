@@ -1,6 +1,6 @@
-generic
-   Nb_Var : Integer;
-   Nb_Ctr : Integer;
+with
+     ADA.Containers.Vectors;
+
 package Constraint_Engine is
 
    type Type_Problem    is
@@ -30,11 +30,13 @@ package Constraint_Engine is
          Is_Var_Ctr  : Boolean;
       end record;
 
-   type Type_Array_Constraint is
-     Array( 1 .. Nb_Ctr ) of Type_Constraint;
+
+   package Var_Vector is new ADA.Containers.Vectors(Index_Type   => Positive,
+                                                    Element_Type => Type_Variable);
    
-   type Type_Array_Variable   is
-     Array( 1 .. Nb_Var ) of Type_Variable;
+   package Ctr_Vector is new ADA.Containers.Vectors(Index_Type   => Positive,
+                                                    Element_Type => Type_Constraint);
+
 
    type Type_Array_Position   is
      Array( Integer range <> ) of Positive;
@@ -49,7 +51,7 @@ package Constraint_Engine is
      (Self : Type_Problem; V_1 : Integer; Rel : Enum_Relational; V_2 : Integer) return Boolean;
 
    function Get_Var
-     (Self : Type_Problem) return Type_Array_Variable;
+     (Self : Type_Problem) return Var_Vector.Vector;
 
    pragma Assertion_Policy (Pre => Check);
    procedure Add_Var
@@ -75,8 +77,8 @@ private
       record
          Var_Cur  : Integer := 0;
          Ctr_Cur  : Integer := 0;
-         Var_List : Type_Array_Variable;
-         Ctr_List : Type_Array_Constraint;
+         Var_List : Var_Vector.Vector;
+         Ctr_List : Ctr_Vector.Vector;
       end record;
 
 end Constraint_Engine;

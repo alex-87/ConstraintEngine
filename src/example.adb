@@ -6,12 +6,11 @@ use  Ada.Integer_Text_IO, Ada.Text_IO;
 
 procedure Example is
 
-   package Test_Engine is new Constraint_Engine(Nb_Var => 2,
-                                                Nb_Ctr => 3);
+   package Test_Engine renames Constraint_Engine;
    use Test_Engine;
 
    P : Type_Problem;
-   S : Type_Array_Variable;
+   S : Var_Vector.Vector;
 
 begin
 
@@ -36,7 +35,7 @@ begin
    S := P.Get_Var;
 
    Put("Solution : ");
-   for Cursor in S'Range loop
+   for Cursor in S.First_Index .. S.Last_Index loop
       Put( Integer'Image(S(Cursor).Curr_Solution) & ", ");
    end loop;
    New_Line;
