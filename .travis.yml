@@ -1,5 +1,7 @@
 dist: xenial
 sudo: enabled
+
+"language": ada
   
 addons:
   apt:
