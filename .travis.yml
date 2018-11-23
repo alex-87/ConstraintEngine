@@ -1,0 +1,10 @@
+dist: xenial
+sudo: enabled
+  
+addons:
+  apt:
+    packages:
+    - gnat
+
+script:
+  - gprbuild -d -Pconstraintengine.gpr

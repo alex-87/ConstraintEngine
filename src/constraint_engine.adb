@@ -1,5 +1,11 @@
 pragma Ada_2012;
 
+with Ada.Integer_Text_IO,
+     Ada.Text_IO,
+     Constraint_Engine;
+
+use  Ada.Integer_Text_IO, Ada.Text_IO;
+
 package body Constraint_Engine is
 
 
@@ -24,13 +30,15 @@ package body Constraint_Engine is
 
             if Var_Cursor = 1 then
 
-               if Next_P.Var_List( Nb_Var ).Curr_Solution > Next_P.Var_List( Nb_Var ).Top_Interval
+               if Next_P.Var_List( Nb_Var ).Curr_Solution >= Next_P.Var_List( Nb_Var ).Top_Interval and
+                  Next_P.Var_List( 1 ).Curr_Solution >= Next_P.Var_List( 1 ).Top_Interval
                then
                   raise No_Solution
                     with "No solution can be found.";
                end if;
 
                if Next_P.Var_List( 1 ).Curr_Solution < Next_P.Var_List( 1 ).Top_Interval then
+
                   Next_P.Var_List( 1 ).Curr_Solution := Next_P.Var_List( 1 ).Curr_Solution + 1;
 
                   if Next_P.Is_Valid_Solution then
@@ -51,6 +59,7 @@ package body Constraint_Engine is
                      Inc_Next := True;
                   end if;
                end if;
+
             end if;
          end loop;
       end loop;
@@ -130,6 +139,7 @@ package body Constraint_Engine is
    is
       New_Var : Type_Variable := (Low_Interval, Top_Interval, Low_Interval);
    begin
+
       Self.Var_List( Self.Var_Cur + 1 ) := New_Var;
       Self.Var_Cur                      := Self.Var_Cur + 1;
    end Add_Var;
