@@ -161,6 +161,29 @@ package body Constraint_Engine is
       Self.Ctr_Cur                      := Self.Ctr_Cur + 1;
    end Add_Constraint_Var;
 
+
+   ---------------------------------
+   -- Add_Constraint_Var_Multiple --
+   ---------------------------------
+
+   procedure Add_Constraint_Var_Multiple
+     (Self : in out Type_Problem;
+      V_All_Position : Type_Array_Position;
+      Rel : Enum_Relational)
+   is
+   begin
+      for Current_A in V_All_Position'Range loop
+         for Current_B in Current_A .. V_All_Position'Last loop
+            if V_All_Position( Current_A ) /= V_All_Position( Current_B ) then
+               Self.Add_Constraint_Var(V1_Position => V_All_Position( Current_A ),
+                                       Rel         => Rel,
+                                       V2_Position => V_All_Position( Current_B ) );
+            end if;
+         end loop;
+      end loop;
+   end Add_Constraint_Var_Multiple;
+
+
    ------------------------
    -- Add_Constraint_Int --
    ------------------------
