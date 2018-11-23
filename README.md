@@ -1,4 +1,4 @@
-# Constraint Engine package in Ada
+# Constraint Engine package in Ada [![Build Status](https://travis-ci.org/alex-87/ConstraintEngine.svg?branch=master)](https://travis-ci.org/alex-87/ConstraintEngine)
 
 Simple ADA package for constraint solving. Supported operations are relational operations between integer variables.
 
