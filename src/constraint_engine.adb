@@ -2,6 +2,7 @@ pragma Ada_2012;
 
 with Ada.Integer_Text_IO,
      Ada.Text_IO,
+     ADA.Containers.Vectors,
      Constraint_Engine;
 
 use  Ada.Integer_Text_IO, Ada.Text_IO;
@@ -26,11 +27,11 @@ package body Constraint_Engine is
       end if;
 
       loop
-         for Var_Cursor in Next_P.Var_List'Range loop
+         for Var_Cursor in Next_P.Var_List.First_Index .. Next_P.Var_List.Last_Index loop
 
             if Var_Cursor = 1 then
 
-               if Next_P.Var_List( Nb_Var ).Curr_Solution >= Next_P.Var_List( Nb_Var ).Top_Interval and
+               if Next_P.Var_List( Next_P.Var_List.Last_Index ).Curr_Solution >= Next_P.Var_List( Next_P.Var_List.Last_Index ).Top_Interval and
                   Next_P.Var_List( 1 ).Curr_Solution >= Next_P.Var_List( 1 ).Top_Interval
                then
                   raise No_Solution
@@ -79,7 +80,7 @@ package body Constraint_Engine is
       Cur_V2 : Integer := 0;
    begin
 
-      for I in Self.Ctr_List'Range loop
+      for I in Self.Ctr_List.First_Index .. Self.Ctr_List.Last_Index loop
          Cur_V1 := Self.Var_List( Self.Ctr_List(I).V1_Position ).Curr_Solution;
 
          if Self.Ctr_List(I).Is_Var_Ctr then
@@ -123,7 +124,7 @@ package body Constraint_Engine is
    -- Get_Var --
    -------------
 
-   function Get_Var(Self : Type_Problem) return Type_Array_Variable
+   function Get_Var(Self : Type_Problem) return Var_Vector.Vector
    is
    begin
       return Self.Var_List;
