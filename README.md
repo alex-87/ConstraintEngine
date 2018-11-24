@@ -7,10 +7,7 @@ Simple ADA package for constraint solving. Supported operations are relational o
 Initialize the package
 ---
 
-`package Test_Engine is new Constraint_Engine(Nb_Var => 2, Nb_Ctr => 3);`
-
-* The parameter `Nb_Var` represents the number of variables.
-* The parameter `Nb_Ctr` represents the number of constraints.
+`package Test_Engine is new Constraint_Engine;`
 
 Add the variables
 ---
@@ -52,6 +49,18 @@ Add the constraints (relation between a variable and an integer)
 * The parameter `V1_Position` represents a variable position **in the added order**.
 * The parameter `Rel` represents the relation between the variable and the integer.
 * The parameter `V` is the integer's value.
+
+
+Add the multiple constraint (relation between ore than two variables)
+---
+
+```Ada
+   P.Add_Constraint_Var_Multiple(V_All_Position => (1, 2),
+                                 Rel            => IS_INEQUAL);
+```
+
+* The parameter `V_All_Position` represents an array of concerned variables' position
+* The parameter `Rel` represents the relation between variables. **`IS_EQUAL` and `IS_INEQUAL` only**.
 
 The relations
 ---
