@@ -51,7 +51,7 @@ Add the constraints (relation between a variable and an integer)
 * The parameter `V` is the integer's value.
 
 
-Add the multiple constraint (relation between ore than two variables)
+Add the multiple constraint (relation between multiple variables)
 ---
 
 ```Ada
