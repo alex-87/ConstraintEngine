@@ -11,4 +11,5 @@ script:
   - mkdir obj
   - mkdir obj/debug
   - mkdir obj/release
-  - gprbuild -d -P constraintengine
+  - gprbuild -d -P constraintengine -Xmode=debug
+  - gprbuild -d -P constraintengine -Xmode=release
