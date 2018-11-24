@@ -1,5 +1,20 @@
 project Constraintengine is
+    type Type_Mode is ("debug", "release");
+    Mode : Type_Mode := external("mode", "debug");
+
     for Source_Dirs use ("src");
-    for Object_Dir use "obj";
+    for Object_Dir use "obj/" & Mode;
+
+    package Compiler is
+      case Mode is
+         when "debug" =>
+            for Switches ("Ada")
+                use ("-g");
+         when "release" =>
+            for Switches ("Ada")
+                use ("-O3");
+      end case;
+   end Compiler;
+
     for Main use ("example.adb");
 end Constraintengine;
