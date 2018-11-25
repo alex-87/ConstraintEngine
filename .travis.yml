@@ -7,6 +7,11 @@ addons:
     - gnat
     - gprbuild
 
+before_script:
+  - git clone https://github.com/alire-project/libaunit.git .
+  - make
+  - make install
+
 script:
   - mkdir obj
   - mkdir obj/debug
