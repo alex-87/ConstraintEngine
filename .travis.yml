@@ -8,7 +8,7 @@ addons:
     - gprbuild
 
 before_script:
-  - git clone https://github.com/alire-project/libaunit.git .
+  - git clone https://github.com/alire-project/libaunit.git AUnit && cd AUnit
   - make
   - make install
 
