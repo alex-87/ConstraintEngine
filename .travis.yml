@@ -8,7 +8,7 @@ addons:
     - gprbuild
 
 before_script:
-  - git clone https://github.com/alire-project/libaunit.git AUnit && cd AUnit
+  - git clone https://github.com/alire-project/libaunit.git AUnit && cd AUnit && mkdir aunit-obj && mkdir aunit-obj/native-full
   - sed -i.bak 's/lib\/gnat\///g' Makefile
   - sed -i.bak 's/--no-build-var //g' Makefile
   - make install
