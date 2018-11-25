@@ -9,7 +9,7 @@ addons:
 
 before_script:
   - git clone https://github.com/alire-project/libaunit.git AUnit && cd AUnit
-  - make
+  - cat Makefile | sed -e 's/lib\/gnat\///g' > Makefile
   - make install
 
 script:
