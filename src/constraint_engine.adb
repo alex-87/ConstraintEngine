@@ -249,6 +249,7 @@ package body Constraint_Engine is
       V_Integer : Integer)
    is
    begin
+      null;
    end Apply_Equal_Int_Constraint;
 
 
