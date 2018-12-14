@@ -73,6 +73,9 @@ package Constraint_Engine is
 
 private
 
+   procedure Apply_Equal_Int_Constraint
+     (Self : in out Type_Problem; V_Position : Positive; V_Integer : Integer);
+
    type Type_Problem is tagged
       record
          Var_Cur  : Integer := 0;
