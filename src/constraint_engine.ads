@@ -53,6 +53,9 @@ package Constraint_Engine is
    function Get_Var
      (Self : Type_Problem) return Var_Vector.Vector;
 
+   function Check_Contradiction
+     (Self : Type_Problem) return Boolean;
+
    pragma Assertion_Policy (Pre => Check);
    procedure Add_Var
      (Self : in out Type_Problem; Low_Interval : Integer; Top_Interval : Integer)
