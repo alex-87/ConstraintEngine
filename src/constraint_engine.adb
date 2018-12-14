@@ -237,4 +237,19 @@ package body Constraint_Engine is
       Self.Ctr_Cur                      := Self.Ctr_Cur + 1;
    end Add_Constraint_Int;
 
+
+
+   --------------------------------
+   -- Apply_Equal_Int_Constraint --
+   --------------------------------
+
+   procedure Apply_Equal_Int_Constraint
+     (Self : in out Type_Problem;
+      V_Position : Positive;
+      V_Integer : Integer)
+   is
+   begin
+   end Apply_Equal_Int_Constraint;
+
+
 end Constraint_Engine;
