@@ -18,6 +18,11 @@ package body Constraint_Engine is
       Inc_Next : Boolean := False;
    begin
 
+      if Next_P.Check_Contradiction then
+         raise No_Solution
+           with "Contradicted constraint detected.";
+      end if;
+
       if Next_P.Is_Valid_Solution then
          return Next_P;
       end if;
@@ -116,6 +121,42 @@ package body Constraint_Engine is
    end Is_Valid_Relation;
 
 
+   -------------------------
+   -- Check_Contradiction --
+   -------------------------
+
+   function Check_Contradiction
+     (Self : Type_Problem)
+      return Boolean
+   is
+      Current_Fixed_C : Natural := 0;
+   begin
+      for Current_Variable in Self.Var_List.First_Index .. Self.Var_List.Last_Index loop
+         for Current_Constraint in Self.Ctr_List.First_Index .. Self.Ctr_List.Last_Index loop
+
+            if Self.Ctr_List.Element(Current_Constraint).V1_Position = Current_Variable then
+               if
+                 Self.Ctr_List.Element(Current_Constraint).Rel = IS_EQUAL or
+                 Self.Ctr_List.Element(Current_Constraint).Rel = IS_INEQUAL
+               then
+                  Current_Fixed_C := Current_Fixed_C + 1;
+               end if;
+            end if;
+
+         end loop;
+
+         if Current_Fixed_C = 2 then
+            return True;
+         end if;
+
+         Current_Fixed_C := 0;
+
+      end loop;
+
+      return False;
+   end Check_Contradiction;
+
+
    -------------
    -- Get_Var --
    -------------
@@ -208,6 +249,7 @@ package body Constraint_Engine is
       V_Integer : Integer)
    is
    begin
+      null;
    end Apply_Equal_Int_Constraint;
 
 
