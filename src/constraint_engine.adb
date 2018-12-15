@@ -19,7 +19,7 @@ package body Constraint_Engine is
    begin
 
       if Next_P.Check_Contradiction then
-         raise No_Solution
+         raise Contradicted_Contraint
            with "Contradicted constraint detected.";
       end if;
 
