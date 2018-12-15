@@ -72,7 +72,12 @@ package Constraint_Engine is
    procedure Add_Constraint_Int
      (Self : in out Type_Problem; V1_Position : Positive; Rel : Enum_Relational; V : Integer);
 
+   
+   --- Exceptions
+   
    No_Solution : exception;
+   
+   Contradicted_Contraint : exception;
 
 private
 
