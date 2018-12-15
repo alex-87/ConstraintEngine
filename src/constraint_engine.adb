@@ -130,16 +130,27 @@ package body Constraint_Engine is
       return Boolean
    is
       Current_Fixed_C : Natural := 0;
+      Current_Fixed_I : Natural := 0;
    begin
       for Current_Variable in Self.Var_List.First_Index .. Self.Var_List.Last_Index loop
          for Current_Constraint in Self.Ctr_List.First_Index .. Self.Ctr_List.Last_Index loop
 
-            if Self.Ctr_List.Element(Current_Constraint).V1_Position = Current_Variable then
+            if Self.Ctr_List.Element(Current_Constraint).Is_Var_Ctr then
+               if Self.Ctr_List.Element(Current_Constraint).V1_Position = Current_Variable or
+                  Self.Ctr_List.Element(Current_Constraint).V2_Position = Current_Variable then
+                  if
+                    Self.Ctr_List.Element(Current_Constraint).Rel = IS_EQUAL or
+                    Self.Ctr_List.Element(Current_Constraint).Rel = IS_INEQUAL
+                  then
+                     Current_Fixed_C := Current_Fixed_C + 1;
+                  end if;
+               end if;
+            else
                if
                  Self.Ctr_List.Element(Current_Constraint).Rel = IS_EQUAL or
                  Self.Ctr_List.Element(Current_Constraint).Rel = IS_INEQUAL
                then
-                  Current_Fixed_C := Current_Fixed_C + 1;
+                  Current_Fixed_I := Current_Fixed_I + 1;
                end if;
             end if;
 
@@ -149,7 +160,12 @@ package body Constraint_Engine is
             return True;
          end if;
 
+         if Current_Fixed_I > 1 then
+            return True;
+         end if;
+
          Current_Fixed_C := 0;
+         Current_Fixed_I := 0;
 
       end loop;
 
