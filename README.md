@@ -62,6 +62,19 @@ Add the multiple constraint (relation between multiple variables)
 * The parameter `V_All_Position` represents an array of concerned variables' position
 * The parameter `Rel` represents the relation between variables. **`IS_EQUAL` and `IS_INEQUAL` only**.
 
+Add the multiple constraint (relation between multiple variables and an integer)
+---
+
+```Ada
+   P.Add_Constraint_Int_Multiple(V_All_Position => (1, 2),
+                                 Rel            => IS_MORE
+                                 V              => 0);
+```
+
+* The parameter `V_All_Position` represents an array of concerned variables' position
+* The parameter `Rel` represents the relation between variables.
+* The parameter `V` is the integer's value.
+
 The relations
 ---
 
