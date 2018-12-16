@@ -71,6 +71,9 @@ package Constraint_Engine is
    
    procedure Add_Constraint_Int
      (Self : in out Type_Problem; V1_Position : Positive; Rel : Enum_Relational; V : Integer);
+   
+   procedure Add_Constraint_Int_Multiple
+     (Self : in out Type_Problem; V_All_Position : Type_Array_Position; Rel : Enum_Relational; V : Integer);
 
    
    --- Exceptions

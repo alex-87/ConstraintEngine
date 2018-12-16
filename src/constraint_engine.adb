@@ -254,6 +254,24 @@ package body Constraint_Engine is
    end Add_Constraint_Int;
 
 
+   ---------------------------------
+   -- Add_Constraint_Int_Multiple --
+   ---------------------------------
+
+   procedure Add_Constraint_Int_Multiple
+     (Self : in out Type_Problem;
+      V_All_Position : Type_Array_Position;
+      Rel : Enum_Relational;
+      V : Integer)
+   is
+   begin
+      for Current_A in V_All_Position'Range loop
+         Self.Add_Constraint_Int(V1_Position => V_All_Position( Current_A ),
+                                 Rel         => Rel,
+                                 V           => V );
+      end loop;
+   end Add_Constraint_Int_Multiple;
+
 
    --------------------------------
    -- Apply_Equal_Int_Constraint --
