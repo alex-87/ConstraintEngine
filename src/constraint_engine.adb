@@ -249,6 +249,12 @@ package body Constraint_Engine is
    is
       C : Type_Constraint := (V1_Position, Rel, 1, V, False);
    begin
+      if Rel = IS_EQUAL then
+         Self.Var_List(V1_Position).Top_Interval  := V;
+         Self.Var_List(V1_Position).Low_Interval  := V;
+         Self.Var_List(V1_Position).Curr_Solution := V;
+      end if;
+
       Self.Ctr_List.Append( C );
       Self.Ctr_Cur                      := Self.Ctr_Cur + 1;
    end Add_Constraint_Int;
@@ -271,20 +277,5 @@ package body Constraint_Engine is
                                  V           => V );
       end loop;
    end Add_Constraint_Int_Multiple;
-
-
-   --------------------------------
-   -- Apply_Equal_Int_Constraint --
-   --------------------------------
-
-   procedure Apply_Equal_Int_Constraint
-     (Self : in out Type_Problem;
-      V_Position : Positive;
-      V_Integer : Integer)
-   is
-   begin
-      null;
-   end Apply_Equal_Int_Constraint;
-
 
 end Constraint_Engine;
